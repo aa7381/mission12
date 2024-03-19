@@ -15,10 +15,10 @@ public class MainActivity extends AppCompatActivity {
     Button btn, btn2;
     ImageView iV, iV2, iV3, iV4;
     EditText eT;
-    double num =0;
-    double sum = 0;
+    double num =0 , sum = 0 ;
 
-    int count = 0 , countminus = 0 , countkefel = 0 ,counthelok = 0;
+
+    int count = 0 ;
     boolean pluspress = false ;
 
     boolean minuspress = false ;
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    // פלוס) {
+    // פלוס
 
 
         public void clicked (View view)
@@ -109,6 +109,29 @@ public class MainActivity extends AppCompatActivity {
             sum=num;
         }
     }
+
+    //חילוק
+
+    public void clicked4(View view)
+    {
+        helokpress = true;
+
+        String textValue4 = eT.getText().toString();
+        count++;
+        num = Double.parseDouble(textValue4);
+
+        if (count>=2)
+        {
+            sum/=num;
+            eT.setText(String.valueOf(sum));
+            count = 0 ;
+        } else if (!eT.getText().toString().isEmpty()) {
+            eT.setText("");
+            sum=num;
+        }
+    }
+
+    //שווה
     public void equal(View view)
     {
         if(pluspress == true)
@@ -135,11 +158,24 @@ public class MainActivity extends AppCompatActivity {
             num = Double.parseDouble(textValue3);
             sum*=num;
         }
+        if(helokpress == true)
+        {
+            count = 0 ;
+            helokpress = false;
+            String textValue4 = eT.getText().toString();
+            num = Double.parseDouble(textValue4);
+            sum/=num;
+        }
         eT.setText(String.valueOf(sum));
 
-
+        //איפוס
     }
-
+    public void restart(View view)
+    {
+        sum = 0 ;
+        num = 0 ;
+        eT.setText("");
+    }
 }
 
 
