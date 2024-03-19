@@ -2,6 +2,7 @@ package com.example.mission12;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -12,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    Button btn, btn2;
+    Button btn, btn2, btn3;
     ImageView iV, iV2, iV3, iV4;
     EditText eT;
     double num =0 , sum = 0 ;
@@ -35,12 +36,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         btn = findViewById(R.id.btn);
         btn2 = findViewById(R.id.btn2);
+        btn3 = findViewById(R.id.btn3);
         iV = (ImageView) findViewById(R.id.iV);
         iV2 = (ImageView) findViewById(R.id.iV2);
         iV3 = (ImageView) findViewById(R.id.iV3);
         iV4 = (ImageView) findViewById(R.id.iV4);
         eT = (EditText) findViewById(R.id.eT);
-
 
 
 
@@ -176,6 +177,14 @@ public class MainActivity extends AppCompatActivity {
         num = 0 ;
         eT.setText("");
     }
+
+    //credits
+    public void go(View view) {
+        Intent si = new Intent(this,creditsactivity.class);
+        si.putExtra("n", sum);
+        startActivity(si);
+    }
+
 }
 
 
