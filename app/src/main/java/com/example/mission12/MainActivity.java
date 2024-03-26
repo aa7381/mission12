@@ -47,7 +47,32 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    public static void notpressequal(boolean pluspress , boolean minuspress , boolean kefelpress ,boolean helokpress, double sum , double num , EditText eT)
+    {
+        String textValue = eT.getText().toString();
+        num = Double.parseDouble(textValue);
 
+        if(pluspress==true)
+        {
+            sum+=num;
+            eT.setText(String.valueOf(sum));
+            pluspress = false;
+
+        } else if (minuspress == true) {
+            sum-=num;
+            eT.setText(String.valueOf(sum));
+            minuspress = false;
+        }else if(kefelpress == true)
+        {
+            sum*=num;
+            eT.setText(String.valueOf(sum));
+            kefelpress = false;
+        } else if (helokpress ==true) {
+            sum/=num;
+            eT.setText(String.valueOf(sum));
+            helokpress = false;
+        }
+    }
     // פלוס
 
 
@@ -55,18 +80,24 @@ public class MainActivity extends AppCompatActivity {
         {
             pluspress = true;
 
-            String textValue = eT.getText().toString();
             count++;
-            num = Double.parseDouble(textValue);
+
 
             if (count>=2)
             {
-                sum+=num;
-                eT.setText(String.valueOf(sum));
+                notpressequal( pluspress , minuspress , kefelpress, helokpress, sum ,  num, eT);
+               // eT.setText(String.valueOf(sum));
                 count = 0 ;
-            } else if (!eT.getText().toString().isEmpty()) {
-                eT.setText("");
-                sum=num;
+            }
+
+            else {
+                String textValue = eT.getText().toString();
+                num = Double.parseDouble(textValue);
+                if (!eT.getText().toString().isEmpty()) {
+                    eT.setText("");
+
+                    sum = num;
+                }
             }
         }
 
@@ -75,18 +106,23 @@ public class MainActivity extends AppCompatActivity {
     {
         minuspress = true;
 
-        String textValue2 = eT.getText().toString();
+
         count++;
-        num = Double.parseDouble(textValue2);
+
 
         if (count>=2)
         {
-            sum-=num;
-            eT.setText(String.valueOf(sum));
+            notpressequal( pluspress , minuspress , kefelpress, helokpress, sum ,  num , eT);
+            //eT.setText(String.valueOf(sum));
             count = 0 ;
-        } else if (!eT.getText().toString().isEmpty()) {
-            eT.setText("");
-            sum=num;
+        }
+        else {
+            String textValue2 = eT.getText().toString();
+            num = Double.parseDouble(textValue2);
+            if (!eT.getText().toString().isEmpty()) {
+                eT.setText("");
+                sum = num;
+            }
         }
     }
 
