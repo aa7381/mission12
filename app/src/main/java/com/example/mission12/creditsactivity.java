@@ -18,7 +18,7 @@ public class creditsactivity extends AppCompatActivity {
 
 
         Intent gi = getIntent();
-        sum = gi.getDoubleExtra("n",1);
+        sum = gi.getDoubleExtra("n",-1);
         tV.setText(String.valueOf(sum));
 
     }
