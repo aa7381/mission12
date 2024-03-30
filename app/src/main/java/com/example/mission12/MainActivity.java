@@ -18,8 +18,6 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Handler handler;
-
     Button btn, btn2, btn3;
     ImageView iV, iV2, iV3, iV4;
     EditText eT;
@@ -50,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         iV4 = (ImageView) findViewById(R.id.iV4);
         eT = (EditText) findViewById(R.id.eT);
 
-        handler = new Handler();
+
 
         // eT.setHint(String.valueOf(numlast));
 
@@ -85,7 +83,11 @@ public class MainActivity extends AppCompatActivity {
             kefelpress = false;
             String textValue = eT.getText().toString();
             num = Double.parseDouble(textValue);
-            numlast *= num;
+            if (numlast!=0) {
+                numlast *= num;
+            }
+            else
+            {numlast = num;}
             eT.setText("");
 
             eT.setHint(String.valueOf(numlast));
@@ -187,7 +189,10 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 String textValue = eT.getText().toString();
                 num = Double.parseDouble(textValue);
-                numlast *= num;
+                if (numlast!=0)
+                    numlast *= num;
+                else
+                    numlast = num;
                 eT.setText("");
                 eT.setHint(String.valueOf(numlast));
             }
@@ -216,7 +221,10 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 String textValue = eT.getText().toString();
                 num = Double.parseDouble(textValue);
-                numlast /= num;
+                if (numlast!=0)
+                    numlast /= num;
+                else
+                    numlast = num;
                 eT.setText("");
                 eT.setHint(String.valueOf(numlast));
             }
