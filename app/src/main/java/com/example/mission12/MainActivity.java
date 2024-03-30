@@ -19,26 +19,22 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     private Handler handler;
-    private int delayMillis = 1000; // Delay in milliseconds
+
     Button btn, btn2, btn3;
     ImageView iV, iV2, iV3, iV4;
     EditText eT;
-    double num =0 , sum = 0,numlast=0;
+    double num = 0, sum = 0, numlast = 0;
 
-    int count = 0 ;
-    boolean pluspress = false ;
+    int count = 0;
+    boolean pluspress = false;
 
-    boolean minuspress = false ;
+    boolean minuspress = false;
 
-    boolean kefelpress = false ;
+    boolean kefelpress = false;
 
-    boolean helokpress = false ;
+    boolean helokpress = false;
 
-    boolean press = false ;
-
-
-
-
+    boolean press = false;
 
 
     @Override
@@ -56,57 +52,55 @@ public class MainActivity extends AppCompatActivity {
 
         handler = new Handler();
 
-       // eT.setHint(String.valueOf(numlast));
-
+        // eT.setHint(String.valueOf(numlast));
 
 
     }
 
 
+    public void notpressequal() {
 
-
-
-
-
-
-
-    public  void notpressequal()
-    {
-
-        if(pluspress==true)
-        {
+        if (pluspress == true) {
 
             pluspress = false;
             String textValue = eT.getText().toString();
             num = Double.parseDouble(textValue);
-            numlast+=num;
+            numlast += num;
             eT.setText("");
-            //eT.setText(String.valueOf(numlast));
             eT.setHint(String.valueOf(numlast));
-            count = 0 ;
+            count = 0;
 
 
-        }
-        else if (minuspress == true)
-        {
+        } else if (minuspress == true) {
 
             minuspress = false;
             String textValue = eT.getText().toString();
             num = Double.parseDouble(textValue);
-            numlast-=num;
+            numlast -= num;
             eT.setText("");
-            //eT.setText(String.valueOf(numlast));
+
             eT.setHint(String.valueOf(numlast));
-            count = 0 ;
-        }else if(kefelpress == true)
-        {
-        //    sum*=num;
-          //  eT.setText(String.valueOf(sum));
+            count = 0;
+        } else if (kefelpress == true) {
             kefelpress = false;
-        } else if (helokpress ==true) {
-         //   sum/=num;
-        //   eT.setText(String.valueOf(sum));
+            String textValue = eT.getText().toString();
+            num = Double.parseDouble(textValue);
+            numlast *= num;
+            eT.setText("");
+
+            eT.setHint(String.valueOf(numlast));
+            count = 0;
+
+        } else if (helokpress == true) {
             helokpress = false;
+            String textValue = eT.getText().toString();
+            num = Double.parseDouble(textValue);
+            numlast /= num;
+            eT.setText("");
+
+            eT.setHint(String.valueOf(numlast));
+            count = 0;
+
         }
     }
 
@@ -114,207 +108,170 @@ public class MainActivity extends AppCompatActivity {
     // פלוס
 
 
-        public void clicked (View view)
-        {
+    public void clicked(View view) {
 
-            pluspress = true;
+        pluspress = true;
 
-            count++;
+        count++;
 
 
-            if (count>=2)
-            {
+        if (count >= 2) {
 
-                notpressequal();
+            notpressequal();
 
+        } else {
+
+
+            if (eT.getText().toString().isEmpty()) {
+                String textValue1 = eT.getHint().toString();
+                numlast = Double.parseDouble(textValue1);
+
+            } else {
+                String textValue = eT.getText().toString();
+                num = Double.parseDouble(textValue);
+                numlast += num;
+                eT.setText("");
+                eT.setHint(String.valueOf(numlast));
             }
 
-            else
-            {
 
+            eT.setHint(String.valueOf(numlast));
 
-
-                if (eT.getText().toString().isEmpty())
-                {
-                    String textValue1 = eT.getHint().toString();
-                    numlast = Double.parseDouble(textValue1);
-
-                }
-                else
-                {
-                    String textValue = eT.getText().toString();
-                    num = Double.parseDouble(textValue);
-                    numlast+=num;
-                    eT.setText("");
-                    eT.setHint(String.valueOf(numlast));
-                }
-
-
-                   // numlast=num;
-                //eT.setHint(String.valueOf(numlast));
-                //eT.setText(String.valueOf(numlast));
-
-
-
-
-                }
-
-
-          //  }
         }
 
+
+        //  }
+    }
+
     //מינוס
-    public void clicked2(View view)
-    {
+    public void clicked2(View view) {
         minuspress = true;
 
         count++;
 
 
-        if (count>=2)
-        {
+        if (count >= 2) {
 
             notpressequal();
-        }
-
-        else
-
-        {
+        } else {
             String textValue = eT.getText().toString();
             num = Double.parseDouble(textValue);
-            numlast-=num;
+            numlast -= num;
             eT.setText("");
         }
 
 
-        // numlast=num;
+
         eT.setHint(String.valueOf(numlast));
     }
 
 
     //כפל
-    public void clicked3(View view)
-    {
+    public void clicked3(View view) {
         kefelpress = true;
 
         count++;
 
 
-        if (count>=2)
-        {
-
-            // notpressequal( pluspress , minuspress , kefelpress, helokpress, sum ,  num, eT);
-            // eT.setText(String.valueOf(sum));
-            eT.setText("");
-            sum=sum*num;
-            //eT.setText(String.valueOf(sum));
-            eT.setHint(String.valueOf(sum));
-            count = 0 ;
-        }
-
-        else
-        {
-            String textValue = eT.getText().toString();
-            num = Double.parseDouble(textValue);
-
-            //if (!eT.getText().toString().isEmpty())
-            //{
-
-            eT.setText("");
-            sum*=num;
-            eT.setHint(String.valueOf(sum));
-        }
-    }
-
-    //שווה
-    public void equal(View view)
-    {
-        if(pluspress == true)
-        {
+        if (count >= 2) {
 
             notpressequal();
-           // count = 0 ;
 
-           // String textValue = eT.getText().toString();
-           // num = Double.parseDouble(textValue);
-           // numlast+=num;
-        }
-        if(minuspress == true)
-        {
-
-            notpressequal();
-        }
-        if(kefelpress == true)
-        {
-            count = 0 ;
-            kefelpress = false;
-            String textValue3 = eT.getText().toString();
-            num = Double.parseDouble(textValue3);
-            sum*=num;
-        }
-        if(helokpress == true)
-        {
-            count = 0 ;
-            helokpress = false;
-            String textValue4 = eT.getText().toString();
-            num = Double.parseDouble(textValue4);
-            sum/=num;
-        }
-        //eT.setText(String.valueOf(numlast));
-        //eT.setHint(String.valueOf(numlast));
+        } else {
 
 
-        //איפוס
+            if (eT.getText().toString().isEmpty()) {
+                String textValue1 = eT.getHint().toString();
+                numlast = Double.parseDouble(textValue1);
+
+            } else {
+                String textValue = eT.getText().toString();
+                num = Double.parseDouble(textValue);
+                numlast *= num;
+                eT.setText("");
+                eT.setHint(String.valueOf(numlast));
+            }
+
+            eT.setHint(String.valueOf(numlast));
+        }
     }
-
-    public void clicked4(View view)
-    {
+    //חילוק
+    public void clicked4(View view) {
         helokpress = true;
 
         count++;
 
 
-        if (count>=2)
-        {
+        if (count >= 2) {
 
-            // notpressequal( pluspress , minuspress , kefelpress, helokpress, sum ,  num, eT);
-            // eT.setText(String.valueOf(sum));
+            notpressequal();
+
+        } else {
+
+
+            if (eT.getText().toString().isEmpty()) {
+                String textValue1 = eT.getHint().toString();
+                numlast = Double.parseDouble(textValue1);
+
+            } else {
+                String textValue = eT.getText().toString();
+                num = Double.parseDouble(textValue);
+                numlast /= num;
+                eT.setText("");
+                eT.setHint(String.valueOf(numlast));
+            }
+            eT.setHint(String.valueOf(numlast));
+
+        }
+    }
+
+        //שווה
+        public void equal (View view)
+        {
+            if (pluspress == true) {
+
+                notpressequal();
+
+            }
+            if (minuspress == true) {
+
+                notpressequal();
+            }
+            if (kefelpress == true) {
+                notpressequal();
+            }
+            if (helokpress == true) {
+                notpressequal();
+            }
+
+
+            //איפוס
+        }
+        public void restart(View view)
+        {
+            numlast = 0 ;
+            num = 0 ;
+            eT.setHint("");
             eT.setText("");
-            sum=sum/num;
-            eT.setText(" ");
-            eT.setHint(String.valueOf(sum));
             count = 0 ;
+            pluspress = false;
+            minuspress = false;
+            kefelpress = false;
+            helokpress = false;
+            sum = 0 ;
+
         }
 
-        else
-        {
-            String textValue = eT.getText().toString();
-            num = Double.parseDouble(textValue);
-
-            //if (!eT.getText().toString().isEmpty())
-            //{
-
-            eT.setText("");
-            sum/=num;
-            eT.setHint(String.valueOf(sum));
+        //credits
+        public void go (View view){
+            Intent si = new Intent(this, creditsactivity.class);
+            si.putExtra("result", numlast);
+            startActivity(si);
         }
-    }
-    public void restart(View view)
-    {
-        sum = 0 ;
-        num = 0 ;
-        eT.setText("");
-        eT.setHint("");
+
     }
 
-    //credits
-    public void go(View view) {
-        Intent si = new Intent(this,creditsactivity.class);
-        si.putExtra("n", sum);
-        startActivity(si);
-    }
 
-}
 
 
 
